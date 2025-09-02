@@ -1,0 +1,74 @@
+/* static/styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #333;
+}
+
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  background: #4a90e2;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #357ab8;
+}
+
+ul.entries {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.entries li {
+  background: #fafafa;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+ul.entries a, ul.entries button {
+  margin-right: 10px;
+  font-size: 0.9em;
+}
+
+canvas {
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.flash {
+  color: green;
+  list-style-type: none;
+  padding: 0;
+}

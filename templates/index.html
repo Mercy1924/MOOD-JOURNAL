@@ -1,0 +1,56 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Journal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Mood Journal</h1>
+
+    <!-- Form to add a new entry -->
+    <form action="{{ url_for('add') }}" method="POST">
+      <textarea name="text" rows="4" placeholder="Write your thoughts..."></textarea>
+      <button type="submit">Save Entry</button>
+    </form>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash">
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Chart container -->
+    <h2>Mood Trend</h2>
+    <canvas id="moodChart" width="400" height="200"></canvas>
+
+    <!-- Recent entries -->
+    <h2>Recent Entries</h2>
+    <ul class="entries">
+      {% for e in entries %}
+        <li>
+          <strong>{{ e.created_at.strftime('%Y-%m-%d %H:%M') }}</strong> –
+          Mood: {{ e.mood }} ({{ '%.2f'|format(e.score) }})
+          <br>
+          {{ e.text }}
+          <br>
+          <a href="{{ url_for('edit', entry_id=e.id) }}">Edit</a>
+          <form action="{{ url_for('delete', entry_id=e.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
